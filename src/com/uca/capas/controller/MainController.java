@@ -86,6 +86,8 @@ public class MainController {
 	}
 	
 	
+	
+	
 	@RequestMapping(value="/Delete", method= RequestMethod.POST)
 	public ModelAndView delete(@RequestParam(value="name") String name ) {
 		ModelAndView mav = new ModelAndView();
@@ -117,6 +119,23 @@ public class MainController {
 		mav.addObject("student", student);
 		mav.setViewName("Modify");
 		
+		return mav;
+	}
+	
+	@RequestMapping(value="/Update",method=RequestMethod.POST)
+	public ModelAndView update(@ModelAttribute Student s) {
+		ModelAndView mav = new ModelAndView();
+		List<Student> students = null;
+		try {
+			log.info("Se modifico un usuario");
+			studentDao.update(s);
+		}catch(Exception e) {
+			log.info("Error"+e.toString());
+		}
+		students=studentDao.findALL();
+		log.info(students.get(0).getlName());
+		mav.addObject("student", students);
+		mav.setViewName("main");
 		return mav;
 	}
 	

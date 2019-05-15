@@ -9,7 +9,9 @@
 <title>Modificar Estudiantes</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/formData" method="POST" modelAttribute="student">
+	<form:form action="${pageContext.request.contextPath}/Update" method="POST" modelAttribute="student">
+		
+		<form:input TYPE="Hidden" NAME="id" path="cStudent"/>
 		
 		<label>Nombre: </label>
 		<form:input type="text" name="name" path="sName" /><br>

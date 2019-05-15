@@ -70,6 +70,18 @@ public class StudentDAOImpl implements StudentDAO {
 
 	}
 	}
+
+	@Transactional
+	public int update(Student s) throws DataAccessException {
+		try {
+			entityManager.merge(s);
+			return 1;
+		}
+		catch(Throwable e) {
+			e.printStackTrace();
+			return 1;
+		}
+	}
 }
 
 
