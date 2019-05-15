@@ -103,6 +103,23 @@ public class MainController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/Modify", method= RequestMethod.POST)
+	public ModelAndView Modify(@RequestParam(value="id") int id ) {
+		ModelAndView mav = new ModelAndView();
+		Student student = null;
+		try {
+			student = studentDao.findOne(id);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.addObject("student", student);
+		mav.setViewName("Modify");
+		
+		return mav;
+	}
+	
 }
 
 

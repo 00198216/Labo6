@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>SpringJPA es maldad</title>
+<title>Lista de Estudiantes</title>
 </head>
 <body>
 
@@ -25,7 +25,10 @@
            <th>${student.lName}</th>
            <th>${student.sAge}</th>
            <th>${student.activoDelegate}</th>
-           <th><input type="submit" value="Editar"></th>
+           <th><form  name="form1" action="${pageContext.request.contextPath}/Modify" method="post">
+            <INPUT TYPE="Hidden" NAME="id" value=${student.cStudent}>
+            <INPUT TYPE="Submit" VALUE="Editar">
+        </form></th>
        </tr>
        </c:forEach>
        
@@ -56,6 +59,7 @@
   <input type="submit" value="Enviar">
   
 </form>
+
 
 </body>
 </html>
